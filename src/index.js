@@ -1,4 +1,5 @@
 import { fetchBreeds, fetchCatByBreed } from './cat-api';
+import './styles.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SlimSelect from 'slim-select';
 import 'slim-select/dist/slimselect.css';
@@ -9,8 +10,8 @@ const ref = {
   loader: document.querySelector('.loader'),
   error: document.querySelector('.error'),
 };
-
 const { selector, divCatInfo, loader, error } = ref;
+
 loader.classList.replace('loader', 'is-hidden');
 error.classList.add('is-hidden');
 divCatInfo.classList.add('is-hidden');
@@ -51,6 +52,7 @@ function onSelectBreed(event) {
 function onFetchError(error) {
   selector.classList.remove('is-hidden');
   loader.classList.replace('loader', 'is-hidden');
+
   Notify.failure(
     'Oops! Something went wrong! Try reloading the page or select another cat breed!',
     {
